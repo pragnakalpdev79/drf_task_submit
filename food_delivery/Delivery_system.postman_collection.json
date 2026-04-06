@@ -1,0 +1,2184 @@
+{
+	"info": {
+		"_postman_id": "daff8164-20d8-4c73-83e0-a2e945e79448",
+		"name": "Delivery_system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51929569",
+		"_collection_link": "https://pragnakalpdev79-1969201.postman.co/workspace/67c30dbe-7147-41bc-80f5-605e29c359e1/collection/51929569-daff8164-20d8-4c73-83e0-a2e945e79448?action=share&source=collection_link&creator=51929569"
+	},
+	"item": [
+		{
+			"name": "restaurants",
+			"item": [
+				{
+					"name": "register_new_restaurants(for_owners_only)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjExOTMzLCJpYXQiOjE3NzUyMDgzMzMsImp0aSI6Ijg1ZGQ2N2Q3YjhkMzRlNTVhYWMzNjU3YmI5OGNkYzczIiwidXNlcl9pZCI6IjFlYmIwMjU0LTI2ZjYtNGUwYi05NzY3LWFmMDc0MWFlZDEzOCJ9.Mvbm_mwdz0opFWYZjFYcG8PkuNFXj-JUgggtN58SNYs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Burger King",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is an american outlet serving burgers",
+									"type": "text"
+								},
+								{
+									"key": "cuisine_type",
+									"value": "am",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "SG highay,Ahm - 380015",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "952563500",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ame_resto@email.com",
+									"type": "text"
+								},
+								{
+									"key": "opening_time",
+									"value": "11:00:00",
+									"type": "text"
+								},
+								{
+									"key": "closing_time",
+									"value": "23:00:00",
+									"type": "text"
+								},
+								{
+									"key": "delivery_fee",
+									"value": "29",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restaurant_details",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/18/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								"18",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_r_details_owners_only",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE1NTg3LCJpYXQiOjE3NzUyMTE5ODcsImp0aSI6IjdlNWMxZDY0ZmMzMzQxY2Y4NWVlY2Q0YWViNWU3Y2MxIiwidXNlcl9pZCI6IjFlYmIwMjU0LTI2ZjYtNGUwYi05NzY3LWFmMDc0MWFlZDEzOCJ9.mcNrKq5Uv-1p_BUPS-wjcwfdkA7Y9aqQgtQCUoY8NL4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/home/pragnakalpl39/Downloads/6mb.jpg",
+									"disabled": true
+								},
+								{
+									"key": "latitude",
+									"value": "23.0947334",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "72.56692",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "minimum_order",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/20/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								"20",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menu_under_restaurant",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/18/menu/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								"18",
+								"menu",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listall",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json; version=v2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_menu_items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1NDY1MjU3LCJpYXQiOjE3NzU0NjE2NTcsImp0aSI6IjdkNDliZjcwNDE1ODRjYjM5NDA4Y2I5YzZkN2RkNzBmIiwidXNlcl9pZCI6IjFlYmIwMjU0LTI2ZjYtNGUwYi05NzY3LWFmMDc0MWFlZDEzOCJ9.WpWcrBHVgzv2ysIK0c-c5GufqpcupHl5b6v9GNZaZz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "restoid",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "panini",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "this is a panini",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "m",
+									"type": "text"
+								},
+								{
+									"key": "dietary_info",
+									"value": "no",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/rmenuitem/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"rmenuitem",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_my_resto_mi",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1NDY3NTM3LCJpYXQiOjE3NzU0NjM5MzcsImp0aSI6ImU2YWEwOWFkODc3NjRkZmM5OTJhZGE1NzkxODZhZTczIiwidXNlcl9pZCI6IjFlYmIwMjU0LTI2ZjYtNGUwYi05NzY3LWFmMDc0MWFlZDEzOCJ9.OKf25e2yS-pOOtwarLMTcBnMpTtjsHgt42frOMytQR4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "restoid",
+									"value": "20",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "panini",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "99",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "this is a panini",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "m",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dietary_info",
+									"value": "no",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/rmenuitem/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"rmenuitem",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_menu_items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1NDcyMDAxLCJpYXQiOjE3NzU0Njg0MDEsImp0aSI6IjVjNzFjZWZiYzRmNjRiMTI5ZGM3YjEwMTQxNjQ1N2I3IiwidXNlcl9pZCI6IjFlYmIwMjU0LTI2ZjYtNGUwYi05NzY3LWFmMDc0MWFlZDEzOCJ9.Tk89DaDtA_z5aHHsosQU8SfNzjCw8EP19RMKzcZ2q_s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "restoid",
+									"value": "20",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "cheesecake",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "this is a panini",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "m",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dietary_info",
+									"value": "no",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/rmenuitem/35/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"rmenuitem",
+								"35",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delte_menu_item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1NDcyMDAxLCJpYXQiOjE3NzU0Njg0MDEsImp0aSI6IjVjNzFjZWZiYzRmNjRiMTI5ZGM3YjEwMTQxNjQ1N2I3IiwidXNlcl9pZCI6IjFlYmIwMjU0LTI2ZjYtNGUwYi05NzY3LWFmMDc0MWFlZDEzOCJ9.Tk89DaDtA_z5aHHsosQU8SfNzjCw8EP19RMKzcZ2q_s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "restoid",
+									"value": "20",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "cheesecake",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "this is a panini",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "m",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dietary_info",
+									"value": "no",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/rmenuitem/35/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"rmenuitem",
+								"35",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Registration__tested",
+					"item": [
+						{
+							"name": "user_registration_CUSTOMER",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "customer1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "customer1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pass@123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirm",
+											"value": "Pass@123",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "customer1f",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "customer1l",
+											"type": "text"
+										},
+										{
+											"key": "utype",
+											"value": "c",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9898984000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/auth/register/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"register",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user_registration_DRIVER",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "driver1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "driver2@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pass@123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirm",
+											"value": "Pass@123",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "driver1f",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "driver1l",
+											"type": "text"
+										},
+										{
+											"key": "utype",
+											"value": "d",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9898984001",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/auth/register/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"register",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user_registration_OWNER",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "rowner1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "rowner1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pass@123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirm",
+											"value": "Pass@123",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "rowner1f",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "rowner1l",
+											"type": "text"
+										},
+										{
+											"key": "utype",
+											"value": "r",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9898984002",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/auth/register/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"register",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin Only",
+					"item": [
+						{
+							"name": "user_delete(soft)_for_admin_only",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczODM3NzM5LCJpYXQiOjE3NzM4MzQxMzksImp0aSI6ImU1NjQ0OWM3OTcyNjQwM2I5OGJmMDA2NTgzNzFmZWNjIiwidXNlcl9pZCI6IjRiYTRmMzIwLWM4ZjQtNGFhYi04ZjQ0LTg4YzQ2MjVjNjcyMiJ9.NV22yORkyMUcfJ7R7R0Vuevj7PCM0WBaUxcg3FFuNYg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/foradmin/user/delete/test3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"foradmin",
+										"user",
+										"delete",
+										"test3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "restore_user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczODM3OTA3LCJpYXQiOjE3NzM4MzQzMDcsImp0aSI6ImE1NmRhZTMzOTM0YzQ0YzBhNjEyMmZlMTM4NGM0NjRmIiwidXNlcl9pZCI6IjRiYTRmMzIwLWM4ZjQtNGFhYi04ZjQ0LTg4YzQ2MjVjNjcyMiJ9.9aQxKLTphyOB3nukxL_p5ge150gVpu4DQ2YvlUi666I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/foradmin/user/restore/test3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"foradmin",
+										"user",
+										"restore",
+										"test3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "admin_login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pass@123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/auth/login/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profiles",
+					"item": [
+						{
+							"name": "customer_profile_adr",
+							"item": [
+								{
+									"name": "get_your_adr",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjAzNDU3LCJpYXQiOjE3NzUxOTk4NTcsImp0aSI6ImRmYjNjMWRiNTIwMDRhNjhiYjc3NmMyODAzZGMwMWIzIiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.ALjpGRFF1GLEdAsOUJE7ghLJzOTw7OgDJiwLowvkxvg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/profiles/address/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"profiles",
+												"address",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add_adr",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjAzNDU3LCJpYXQiOjE3NzUxOTk4NTcsImp0aSI6ImRmYjNjMWRiNTIwMDRhNjhiYjc3NmMyODAzZGMwMWIzIiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.ALjpGRFF1GLEdAsOUJE7ghLJzOTw7OgDJiwLowvkxvg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "adrname",
+													"value": "museum",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "3H42+2QX, Pujya Dharmsingh Swami Marg, behind AEC Tower, Sundar Nagar, Naranpura, Ahmedabad, Gujarat 380013",
+													"type": "text"
+												},
+												{
+													"key": "is_default",
+													"value": "false",
+													"type": "text"
+												},
+												{
+													"key": "latitude",
+													"value": "23.05570",
+													"type": "text"
+												},
+												{
+													"key": "longitude",
+													"value": "72.55047",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/profiles/address/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"profiles",
+												"address",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add_adr_1",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjAzNDU3LCJpYXQiOjE3NzUxOTk4NTcsImp0aSI6ImRmYjNjMWRiNTIwMDRhNjhiYjc3NmMyODAzZGMwMWIzIiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.ALjpGRFF1GLEdAsOUJE7ghLJzOTw7OgDJiwLowvkxvg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "adrname",
+													"value": "home",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "C/12,Ashutosh Flats",
+													"type": "text"
+												},
+												{
+													"key": "is_default",
+													"value": "false",
+													"type": "text"
+												},
+												{
+													"key": "latitude",
+													"value": "23.052882",
+													"type": "text"
+												},
+												{
+													"key": "longitude",
+													"value": "72.551828",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/profiles/address/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"profiles",
+												"address",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "add_adr_2",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjAzNDU3LCJpYXQiOjE3NzUxOTk4NTcsImp0aSI6ImRmYjNjMWRiNTIwMDRhNjhiYjc3NmMyODAzZGMwMWIzIiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.ALjpGRFF1GLEdAsOUJE7ghLJzOTw7OgDJiwLowvkxvg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "adrname",
+													"value": "office",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "PragnaKalp Techlabs",
+													"type": "text"
+												},
+												{
+													"key": "is_default",
+													"value": "false",
+													"type": "text"
+												},
+												{
+													"key": "latitude",
+													"value": "23.114344",
+													"type": "text"
+												},
+												{
+													"key": "longitude",
+													"value": "72.540177",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/profiles/address/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"profiles",
+												"address",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "upload_avatar",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjA3MjA0LCJpYXQiOjE3NzUyMDM2MDQsImp0aSI6IjcwMjg3YThlNGI5YjQwNWE5ZWUzNWUyOWIzNWJkNWQ2IiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.kLrGIXoWbr6-oUGbZHtrHQAbfzW5aIO7yxi0nMslv_c",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "avatar",
+													"type": "file",
+													"src": "/home/pragnakalpl39/Downloads/sample.jpeg"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/profiles/profiles/customer/myprofile?avatar",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"profiles",
+												"profiles",
+												"customer",
+												"myprofile"
+											],
+											"query": [
+												{
+													"key": "avatar",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update_customer_profile",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczODM0NDU3LCJpYXQiOjE3NzM4MzA4NTcsImp0aSI6IjFkY2M3MDk3NjA4ODRkMWM5ODJmYTc4YjdkNTdjYTk3IiwidXNlcl9pZCI6IjQ5NDhjMzZlLTU1NDUtNDdmMy04Y2QzLTRhOTNlNTA4YWJkYiJ9.PewKF2VUNmgCpAGOAnfKViycZINYFWHoXA7rNtURtc4",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "avatar",
+													"type": "file",
+													"src": "/home/pragnakalpl39/Downloads/6mb.jpg",
+													"disabled": true
+												},
+												{
+													"key": "phone_number",
+													"value": "7041943500",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/profiles/profiles/customer/myprofile",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"profiles",
+												"profiles",
+												"customer",
+												"myprofile"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "get_customer_profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjA3MjA0LCJpYXQiOjE3NzUyMDM2MDQsImp0aSI6IjcwMjg3YThlNGI5YjQwNWE5ZWUzNWUyOWIzNWJkNWQ2IiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.kLrGIXoWbr6-oUGbZHtrHQAbfzW5aIO7yxi0nMslv_c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/home/pragnakalpl39/Downloads/6mb.jpg",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/profiles/profiles/customer/myprofile",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profiles",
+										"profiles",
+										"customer",
+										"myprofile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_driver_profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjA3OTk1LCJpYXQiOjE3NzUyMDQzOTUsImp0aSI6IjEyZDI2NWUzYWNiNTRjMjlhNzg4NTJlMDFmMTQxNzFiIiwidXNlcl9pZCI6ImEwM2E0MDIwLTFiMDctNDdjMC1hYTU2LWJjNzc1YTMxMGJiNiJ9.7J8_6T2GWnOdQUwuIVvfxS2La_Wp9h45npKtHJnVEH0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/home/pragnakalpl39/Downloads/6mb.jpg",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/profiles/profiles/driver/myprofile",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profiles",
+										"profiles",
+										"driver",
+										"myprofile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update_driver_profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczODM5MzI2LCJpYXQiOjE3NzM4MzU3MjYsImp0aSI6ImViNDM3ZjMyM2U4OTQ1Nzk5Nzc5Yjg2ZjdiOTc2MmVkIiwidXNlcl9pZCI6IjczMDlmMmE0LTM1NWYtNDBkNy1iNTNmLTFjNTY2ODUwOTQ1NiJ9.B0OLX2ML15mE3v4s4rApKdmLFlWxAt309mrQjQzJXIQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/home/pragnakalpl39/Downloads/6mb.jpg",
+											"disabled": true
+										},
+										{
+											"key": "phone_number",
+											"value": "7041943500",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/profiles/profiles/driver/myprofile",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"profiles",
+										"profiles",
+										"driver",
+										"myprofile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "rowner1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pass@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczNjQ2MDM1LCJpYXQiOjE3NzM2NDI0MzUsImp0aSI6ImRlMGNjNGNiODc5ZDRlMjVhODlhZDA4OWYxOTkwYzU1IiwidXNlcl9pZCI6ImZkYjk4MzNjLTk2YWItNDcxMy05N2ZkLWFmNjhlNDQwYjkxYSJ9.pZTSJPsn7vLzRF7MC7-9OdvgLDH_op7ITnJ7PEiWTfs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refresh_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MzcyOTYxMiwiaWF0IjoxNzczNjQzMjEyLCJqdGkiOiI1MTI4NmM4NTgyNDQ0OGQzOWE1MWMwYWVlM2RiNjFkMyIsInVzZXJfaWQiOiJmZGI5ODMzYy05NmFiLTQ3MTMtOTdmZC1hZjY4ZTQ0MGI5MWEifQ.NZJwIoEDLXkdoyu09NdR2Mr_eSG8ftaQ_66BzH02T_0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/logout/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order_flow",
+			"item": [
+				{
+					"name": "customer_login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "customer1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pass@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resto_login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "rowner1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pass@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "driver_login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "driver2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pass@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer_checks_resto_details",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check_resto_menu_by_id(menu_specific)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/20/menu/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								"20",
+								"menu",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check_resto_by_id(resto_details_with_menu)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/restaurants/details/18/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"restaurants",
+								"details",
+								"18",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_to_cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE3NjM2LCJpYXQiOjE3NzUyMTQwMzYsImp0aSI6IjY0YTVmNGViMGY1YTQyOWM4NzcwNjUxNzBhMGI2ZmI2IiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.IpsjXidwdZq_Q1ppCptd82c21qDuvASwvVn1QErA5e0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "menu_item",
+									"value": "29",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/cart/addtocart/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"cart",
+								"addtocart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check_my_cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE3NjM2LCJpYXQiOjE3NzUyMTQwMzYsImp0aSI6IjY0YTVmNGViMGY1YTQyOWM4NzcwNjUxNzBhMGI2ZmI2IiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.IpsjXidwdZq_Q1ppCptd82c21qDuvASwvVn1QErA5e0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/cart/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkout_not_confirmed",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE3NjM2LCJpYXQiOjE3NzUyMTQwMzYsImp0aSI6IjY0YTVmNGViMGY1YTQyOWM4NzcwNjUxNzBhMGI2ZmI2IiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.IpsjXidwdZq_Q1ppCptd82c21qDuvASwvVn1QErA5e0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/cart/checkout/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"cart",
+								"checkout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkout_confirm_here",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE3NjM2LCJpYXQiOjE3NzUyMTQwMzYsImp0aSI6IjY0YTVmNGViMGY1YTQyOWM4NzcwNjUxNzBhMGI2ZmI2IiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.IpsjXidwdZq_Q1ppCptd82c21qDuvASwvVn1QErA5e0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "confirm",
+									"value": "True",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/cart/checkout/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"cart",
+								"checkout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_order_status_by_resto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE4NDI4LCJpYXQiOjE3NzUyMTQ4MjgsImp0aSI6IjRiYWZlNGI4OTI2NzQxYjc4MTRiYjcwYmI0MzEzNGFjIiwidXNlcl9pZCI6ImEwM2E0MDIwLTFiMDctNDdjMC1hYTU2LWJjNzc1YTMxMGJiNiJ9.yw-C_3DyUYhPZ18eDodCzXDdQ-JxLpP3SHn2E-wwxck",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "co",
+									"description": "order confirmed\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pr",
+									"description": "order prepaing\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "rd",
+									"description": "order read to pick up",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "pu",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/new/fd222373-b128-4b80-9b6e-4451483fc519/update_status/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"new",
+								"fd222373-b128-4b80-9b6e-4451483fc519",
+								"update_status",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_order_status_by_driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc0ODcyODc0LCJpYXQiOjE3NzQ4NjkyNzQsImp0aSI6IjZhZmRlZGU4OGM5ZDRkMWJhMTk1MTM3OWRmMzVmMmI1IiwidXNlcl9pZCI6Ijg5MmMzNWZlLWU3ZWUtNGE5NC1iY2Y1LTIzNzRjNDc2MGVjZSJ9.PZHu8kevndDIu3YiW4fxfBvKwUPsjQ9vxA05mqJc6ew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "co",
+									"description": "order confirmed\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pr",
+									"description": "order prepaing\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "dl",
+									"description": "order read to pick up",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/new/b9f8388e-ef27-4a54-bc6b-f61ce70b867a/update_status/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"new",
+								"b9f8388e-ef27-4a54-bc6b-f61ce70b867a",
+								"update_status",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check_my_orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE3NjM2LCJpYXQiOjE3NzUyMTQwMzYsImp0aSI6IjY0YTVmNGViMGY1YTQyOWM4NzcwNjUxNzBhMGI2ZmI2IiwidXNlcl9pZCI6ImQ5OTI2OGY0LTJkZTctNDM1YS1iZjI5LWFkMWNlYjVjYTkyNiJ9.IpsjXidwdZq_Q1ppCptd82c21qDuvASwvVn1QErA5e0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/new/active/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"new",
+								"active",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check_my_orders_history",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc0OTU3MzI0LCJpYXQiOjE3NzQ5NTM3MjQsImp0aSI6ImI3ZDU2NTkyZmMxYTRiYTc4ZWMyNTdlZjQzZjcxMjRiIiwidXNlcl9pZCI6IjQ5NDhjMzZlLTU1NDUtNDdmMy04Y2QzLTRhOTNlNTA4YWJkYiJ9.UHmBwtuDDdyeY4JWr3NnkcQu5LV8FI-9JCQ6cLEpOms",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/new/history/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"new",
+								"history",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assign_driver_with_orderid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc1MjE4NDI4LCJpYXQiOjE3NzUyMTQ4MjgsImp0aSI6IjRiYWZlNGI4OTI2NzQxYjc4MTRiYjcwYmI0MzEzNGFjIiwidXNlcl9pZCI6ImEwM2E0MDIwLTFiMDctNDdjMC1hYTU2LWJjNzc1YTMxMGJiNiJ9.yw-C_3DyUYhPZ18eDodCzXDdQ-JxLpP3SHn2E-wwxck",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "driver_id",
+									"value": "892c35fe-e7ee-4a94-bcf5-2374c4760ece",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/new/fd222373-b128-4b80-9b6e-4451483fc519/assign_driver/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"new",
+								"fd222373-b128-4b80-9b6e-4451483fc519",
+								"assign_driver",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc0OTU5NDE1LCJpYXQiOjE3NzQ5NTU4MTUsImp0aSI6Ijc3Y2VhY2JkZDM5YjRhMmM5ZTMzOTA5OGViMDM1YTQ4IiwidXNlcl9pZCI6IjQ5NDhjMzZlLTU1NDUtNDdmMy04Y2QzLTRhOTNlNTA4YWJkYiJ9.Z4wsU1K2Od74SMwf1ExCOFwuXJcSpYBu4l4X-oRFo7E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "order",
+									"value": "4bb22af0-8b55-435f-ab4d-6ae4b6de022e",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/reviews/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
