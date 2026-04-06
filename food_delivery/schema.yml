@@ -1,0 +1,2342 @@
+openapi: 3.0.3
+info:
+  title: FOOD DELIVERY SYSTEM
+  version: 1.0.0
+  description: API MAP FOR TASK
+paths:
+  /api/auth/login/:
+    post:
+      operationId: api_auth_login_create
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/auth/logout/:
+    post:
+      operationId: api_auth_logout_create
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/auth/register/:
+    post:
+      operationId: api_auth_register_create
+      description: API endpoint for new user registration.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserRegistration'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserRegistration'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserRegistration'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUserRegistration'
+          description: ''
+  /api/auth/token/:
+    post:
+      operationId: api_auth_token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/auth/token/refresh/:
+    post:
+      operationId: api_auth_token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/auth/token/verify/:
+    post:
+      operationId: api_auth_token_verify_create
+      description: |-
+        Takes a token and indicates if it is valid.  This view provides no
+        information about a token's fitness for a particular use.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenVerify'
+          description: ''
+  /api/foradmin/user/delete/{uname}:
+    delete:
+      operationId: api_foradmin_user_delete_destroy
+      parameters:
+      - in: path
+        name: uname
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/foradmin/user/restore/{uname}:
+    post:
+      operationId: api_foradmin_user_restore_create
+      parameters:
+      - in: path
+        name: uname
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/orders/cart/:
+    get:
+      operationId: api_orders_cart_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CartItem'
+          description: ''
+    post:
+      operationId: api_orders_cart_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+  /api/orders/cart/{id}/:
+    get:
+      operationId: api_orders_cart_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+    put:
+      operationId: api_orders_cart_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+    patch:
+      operationId: api_orders_cart_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCartItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCartItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCartItem'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+    delete:
+      operationId: api_orders_cart_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/orders/cart/addtocart/:
+    post:
+      operationId: api_orders_cart_addtocart_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+  /api/orders/cart/checkout/:
+    post:
+      operationId: api_orders_cart_checkout_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+  /api/orders/cart/clear/:
+    delete:
+      operationId: api_orders_cart_clear_destroy
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/orders/cart/mycart/:
+    get:
+      operationId: api_orders_cart_mycart_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+  /api/orders/new/:
+    get:
+      operationId: api_orders_new_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+          description: ''
+    post:
+      operationId: api_orders_new_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/new/{id}/:
+    get:
+      operationId: api_orders_new_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    put:
+      operationId: api_orders_new_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    patch:
+      operationId: api_orders_new_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    delete:
+      operationId: api_orders_new_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/orders/new/{id}/assign_driver/:
+    post:
+      operationId: api_orders_new_assign_driver_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/new/{id}/cancel/:
+    post:
+      operationId: api_orders_new_cancel_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/new/{id}/update_status/:
+    patch:
+      operationId: api_orders_new_update_status_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrder'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/new/active/:
+    get:
+      operationId: api_orders_new_active_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/new/history/:
+    get:
+      operationId: api_orders_new_history_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/reviews/:
+    get:
+      operationId: api_orders_reviews_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+          description: ''
+    post:
+      operationId: api_orders_reviews_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+  /api/orders/reviews/{id}/:
+    get:
+      operationId: api_orders_reviews_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this review.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    put:
+      operationId: api_orders_reviews_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this review.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    patch:
+      operationId: api_orders_reviews_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this review.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    delete:
+      operationId: api_orders_reviews_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this review.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/profiles/address/:
+    get:
+      operationId: api_profiles_address_list
+      description: |-
+        API endpoint for managing patients.
+        Full ViewSet for Patient model:
+        - POST /api/v1/patients/ (create)
+        - GET /api/v1/patients/ (list all)
+        - GET /api/v1/patients/{id}/ (retrieve)
+        - PUT /api/v1/patients/{id}/ (update)
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Address'
+          description: ''
+    post:
+      operationId: api_profiles_address_create
+      description: |-
+        API endpoint for managing patients.
+        Full ViewSet for Patient model:
+        - POST /api/v1/patients/ (create)
+        - GET /api/v1/patients/ (list all)
+        - GET /api/v1/patients/{id}/ (retrieve)
+        - PUT /api/v1/patients/{id}/ (update)
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Address'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+  /api/profiles/address/{id}/:
+    get:
+      operationId: api_profiles_address_retrieve
+      description: |-
+        API endpoint for managing patients.
+        Full ViewSet for Patient model:
+        - POST /api/v1/patients/ (create)
+        - GET /api/v1/patients/ (list all)
+        - GET /api/v1/patients/{id}/ (retrieve)
+        - PUT /api/v1/patients/{id}/ (update)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+    put:
+      operationId: api_profiles_address_update
+      description: |-
+        API endpoint for managing patients.
+        Full ViewSet for Patient model:
+        - POST /api/v1/patients/ (create)
+        - GET /api/v1/patients/ (list all)
+        - GET /api/v1/patients/{id}/ (retrieve)
+        - PUT /api/v1/patients/{id}/ (update)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Address'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+    patch:
+      operationId: api_profiles_address_partial_update
+      description: |-
+        API endpoint for managing patients.
+        Full ViewSet for Patient model:
+        - POST /api/v1/patients/ (create)
+        - GET /api/v1/patients/ (list all)
+        - GET /api/v1/patients/{id}/ (retrieve)
+        - PUT /api/v1/patients/{id}/ (update)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAddress'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: ''
+    delete:
+      operationId: api_profiles_address_destroy
+      description: |-
+        API endpoint for managing patients.
+        Full ViewSet for Patient model:
+        - POST /api/v1/patients/ (create)
+        - GET /api/v1/patients/ (list all)
+        - GET /api/v1/patients/{id}/ (retrieve)
+        - PUT /api/v1/patients/{id}/ (update)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/profiles/profiles/customer/myprofile:
+    get:
+      operationId: api_profiles_profiles_customer_myprofile_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomProfile'
+          description: ''
+    put:
+      operationId: api_profiles_profiles_customer_myprofile_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomProfile'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomProfile'
+          description: ''
+    patch:
+      operationId: api_profiles_profiles_customer_myprofile_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomProfile'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomProfile'
+          description: ''
+  /api/profiles/profiles/driver/myprofile:
+    get:
+      operationId: api_profiles_profiles_driver_myprofile_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverProfile'
+          description: ''
+    put:
+      operationId: api_profiles_profiles_driver_myprofile_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DriverProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DriverProfile'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverProfile'
+          description: ''
+    patch:
+      operationId: api_profiles_profiles_driver_myprofile_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDriverProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDriverProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDriverProfile'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverProfile'
+          description: ''
+  /api/restaurants/details/:
+    get:
+      operationId: api_restaurants_details_list
+      parameters:
+      - in: query
+        name: cuisine_type
+        schema:
+          type: string
+          enum:
+          - am
+          - ch
+          - in
+          - it
+          - ja
+          - md
+          - me
+          - th
+        description: |-
+          Available Cuisine
+
+          * `it` - Italian
+          * `ch` - Chinese
+          * `in` - Indian
+          * `me` - Mexican
+          * `am` - American
+          * `ja` - Japanese
+          * `th` - Thai
+          * `md` - Mediterranean
+      - in: query
+        name: is_open
+        schema:
+          type: boolean
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRestoListList'
+          description: ''
+    post:
+      operationId: api_restaurants_details_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestoCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RestoCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RestoCreate'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestoCreate'
+          description: ''
+  /api/restaurants/details/{id}/:
+    get:
+      operationId: api_restaurants_details_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this restraunt model.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resto'
+          description: ''
+    patch:
+      operationId: api_restaurants_details_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this restraunt model.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRestoList'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRestoList'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRestoList'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestoList'
+          description: ''
+  /api/restaurants/details/{id}/menu/:
+    get:
+      operationId: api_restaurants_details_menu_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this restraunt model.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItem'
+          description: ''
+  /notification/testmsg/:
+    get:
+      operationId: notification_testmsg_retrieve
+      tags:
+      - notification
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        adrname:
+          type: string
+          description: Short name to identify the adress
+          maxLength: 60
+        address:
+          type: string
+          description: Your full address
+        is_default:
+          type: boolean
+        adrofuser:
+          type: string
+          format: uuid
+      required:
+      - address
+      - adrname
+      - adrofuser
+      - is_default
+    BlankEnum:
+      enum:
+      - ''
+    CartItem:
+      type: object
+      properties:
+        menu_item:
+          type: integer
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        id:
+          type: integer
+          readOnly: true
+        item_name:
+          type: string
+          readOnly: true
+        item_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+          readOnly: true
+        item_total:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - item_name
+      - item_price
+      - item_total
+      - menu_item
+      - quantity
+    CategoryEnum:
+      enum:
+      - a
+      - m
+      - d
+      - b
+      - s
+      type: string
+      description: |-
+        * `a` - Appteizer
+        * `m` - Main Course
+        * `d` - Desert
+        * `b` - Beverage
+        * `s` - Side Dish
+    CuisineTypeEnum:
+      enum:
+      - it
+      - ch
+      - in
+      - me
+      - am
+      - ja
+      - th
+      - md
+      type: string
+      description: |-
+        * `it` - Italian
+        * `ch` - Chinese
+        * `in` - Indian
+        * `me` - Mexican
+        * `am` - American
+        * `ja` - Japanese
+        * `th` - Thai
+        * `md` - Mediterranean
+    CustomProfile:
+      type: object
+      properties:
+        user:
+          type: string
+          format: uuid
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        total_orders:
+          type: string
+          readOnly: true
+        loyalty_points:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - total_orders
+      - user
+    CustomUserRegistration:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone_number:
+          type: string
+          pattern: ^\+?1?\d{9,15}$
+          maxLength: 13
+        password:
+          type: string
+          minLength: 8
+        password_confirm:
+          type: string
+          writeOnly: true
+        first_name:
+          type: string
+          maxLength: 20
+        last_name:
+          type: string
+          maxLength: 20
+        utype:
+          description: "User Type\n\n* `c` - Customer\n* `r` - Restaurant Owner\n*
+            `d` - Delivery Driver   "
+          oneOf:
+          - $ref: '#/components/schemas/UtypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+      required:
+      - email
+      - first_name
+      - last_name
+      - password
+      - password_confirm
+      - phone_number
+      - username
+    DietaryInfoEnum:
+      enum:
+      - v1
+      - v2
+      - gf
+      - df
+      - 'no'
+      type: string
+      description: |-
+        * `v1` - Vegetarian
+        * `v2` - Vegan
+        * `gf` - Gluten-Free
+        * `df` - Dairy-Free
+        * `no` - None
+    DriverProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        vehicle_type:
+          description: |-
+            Delivery partner's Vehicle Type
+
+            * `b` - Bike
+            * `s` - Scooter
+            * `c` - Car
+          oneOf:
+          - $ref: '#/components/schemas/VehicleTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        vehicle_number:
+          type: string
+          maxLength: 10
+        license_number:
+          type: string
+          maxLength: 10
+        is_available:
+          type: boolean
+        total_deliveries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        average_rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+        user:
+          type: string
+          format: uuid
+      required:
+      - created_at
+      - id
+      - license_number
+      - updated_at
+      - user
+      - vehicle_number
+    MenuItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+        category:
+          allOf:
+          - $ref: '#/components/schemas/CategoryEnum'
+          description: |-
+            Available Catagories
+
+            * `a` - Appteizer
+            * `m` - Main Course
+            * `d` - Desert
+            * `b` - Beverage
+            * `s` - Side Dish
+        dietary_info:
+          allOf:
+          - $ref: '#/components/schemas/DietaryInfoEnum'
+          description: |-
+            Diteray information
+
+            * `v1` - Vegetarian
+            * `v2` - Vegan
+            * `gf` - Gluten-Free
+            * `df` - Dairy-Free
+            * `no` - None
+        is_available:
+          type: boolean
+        preparation_time:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+      required:
+      - category
+      - description
+      - dietary_info
+      - id
+      - name
+      - price
+    Order:
+      type: object
+      properties:
+        order_number:
+          type: string
+          format: uuid
+          readOnly: true
+        customer:
+          type: string
+          format: uuid
+          readOnly: true
+        customer_name:
+          type: string
+          readOnly: true
+        restaurant:
+          type: integer
+        restaurant_name:
+          type: string
+          readOnly: true
+        driver:
+          type: string
+          format: uuid
+          nullable: true
+        driver_name:
+          type: string
+          readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          description: |-
+            Order Status
+
+            * `pd` - Pending
+            * `co` - Confiremd
+            * `pr` - Preparing
+            * `rd` - Ready
+            * `pu` - Picked Up
+            * `dl` - Delivered
+            * `cd` - Cancelled
+        status_display:
+          type: string
+          readOnly: true
+        delivery_address:
+          type: integer
+        special_instructions:
+          type: string
+          nullable: true
+        subtotal:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        delivery_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          readOnly: true
+        tax:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          readOnly: true
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        estimated_delivery_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        actual_delivery_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        is_cancellable:
+          type: string
+          readOnly: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - actual_delivery_time
+      - created_at
+      - customer
+      - customer_name
+      - delivery_address
+      - delivery_fee
+      - driver_name
+      - estimated_delivery_time
+      - is_cancellable
+      - items
+      - order_number
+      - restaurant
+      - restaurant_name
+      - status_display
+      - subtotal
+      - tax
+      - total_amount
+      - updated_at
+    OrderItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        menu_item:
+          type: integer
+        item_name:
+          type: string
+          readOnly: true
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        uprice:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+          readOnly: true
+          description: snapshot of item price at order time
+        line_total:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - item_name
+      - line_total
+      - menu_item
+      - quantity
+      - uprice
+    PaginatedRestoListList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestoList'
+    PatchedAddress:
+      type: object
+      properties:
+        adrname:
+          type: string
+          description: Short name to identify the adress
+          maxLength: 60
+        address:
+          type: string
+          description: Your full address
+        is_default:
+          type: boolean
+        adrofuser:
+          type: string
+          format: uuid
+    PatchedCartItem:
+      type: object
+      properties:
+        menu_item:
+          type: integer
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        id:
+          type: integer
+          readOnly: true
+        item_name:
+          type: string
+          readOnly: true
+        item_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+          readOnly: true
+        item_total:
+          type: string
+          readOnly: true
+    PatchedCustomProfile:
+      type: object
+      properties:
+        user:
+          type: string
+          format: uuid
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        total_orders:
+          type: string
+          readOnly: true
+        loyalty_points:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedDriverProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        avatar:
+          type: string
+          format: uri
+          nullable: true
+        vehicle_type:
+          description: |-
+            Delivery partner's Vehicle Type
+
+            * `b` - Bike
+            * `s` - Scooter
+            * `c` - Car
+          oneOf:
+          - $ref: '#/components/schemas/VehicleTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        vehicle_number:
+          type: string
+          maxLength: 10
+        license_number:
+          type: string
+          maxLength: 10
+        is_available:
+          type: boolean
+        total_deliveries:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        average_rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+        user:
+          type: string
+          format: uuid
+    PatchedOrder:
+      type: object
+      properties:
+        order_number:
+          type: string
+          format: uuid
+          readOnly: true
+        customer:
+          type: string
+          format: uuid
+          readOnly: true
+        customer_name:
+          type: string
+          readOnly: true
+        restaurant:
+          type: integer
+        restaurant_name:
+          type: string
+          readOnly: true
+        driver:
+          type: string
+          format: uuid
+          nullable: true
+        driver_name:
+          type: string
+          readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          description: |-
+            Order Status
+
+            * `pd` - Pending
+            * `co` - Confiremd
+            * `pr` - Preparing
+            * `rd` - Ready
+            * `pu` - Picked Up
+            * `dl` - Delivered
+            * `cd` - Cancelled
+        status_display:
+          type: string
+          readOnly: true
+        delivery_address:
+          type: integer
+        special_instructions:
+          type: string
+          nullable: true
+        subtotal:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        delivery_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          readOnly: true
+        tax:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+          readOnly: true
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        estimated_delivery_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        actual_delivery_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        is_cancellable:
+          type: string
+          readOnly: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedRestoList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        cuisine_type:
+          allOf:
+          - $ref: '#/components/schemas/CuisineTypeEnum'
+          description: |-
+            Available Cuisine
+
+            * `it` - Italian
+            * `ch` - Chinese
+            * `in` - Indian
+            * `me` - Mexican
+            * `am` - American
+            * `ja` - Japanese
+            * `th` - Thai
+            * `md` - Mediterranean
+        address:
+          type: string
+        phone_number:
+          type: string
+          pattern: ^\+?1?\d{9,15}$
+          maxLength: 13
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        logo:
+          type: string
+          format: uri
+          nullable: true
+        banner:
+          type: string
+          format: uri
+          nullable: true
+        delivery_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+        minimum_order:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,0})?$
+        is_open_now:
+          type: string
+          readOnly: true
+        average_rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+        total_reviews:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+    PatchedReview:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        customer:
+          type: string
+          format: uuid
+          readOnly: true
+        customer_name:
+          type: string
+          readOnly: true
+        restaurant:
+          type: integer
+          nullable: true
+        menu_item:
+          type: integer
+          nullable: true
+        order:
+          type: string
+          format: uuid
+        rating:
+          type: integer
+          maximum: 5
+          minimum: 0
+        comment:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+    Resto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        cuisine_type:
+          allOf:
+          - $ref: '#/components/schemas/CuisineTypeEnum'
+          description: |-
+            Available Cuisine
+
+            * `it` - Italian
+            * `ch` - Chinese
+            * `in` - Indian
+            * `me` - Mexican
+            * `am` - American
+            * `ja` - Japanese
+            * `th` - Thai
+            * `md` - Mediterranean
+        is_open:
+          type: boolean
+        opening_time:
+          type: string
+          format: time
+        closing_time:
+          type: string
+          format: time
+        menu:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuItem'
+        review_for:
+          type: array
+          items:
+            type: integer
+      required:
+      - closing_time
+      - cuisine_type
+      - description
+      - menu
+      - name
+      - opening_time
+      - review_for
+    RestoCreate:
+      type: object
+      properties:
+        owner:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        cuisine_type:
+          allOf:
+          - $ref: '#/components/schemas/CuisineTypeEnum'
+          description: |-
+            Available Cuisine
+
+            * `it` - Italian
+            * `ch` - Chinese
+            * `in` - Indian
+            * `me` - Mexican
+            * `am` - American
+            * `ja` - Japanese
+            * `th` - Thai
+            * `md` - Mediterranean
+        address:
+          type: string
+        phone_number:
+          type: string
+          pattern: ^\+?1?\d{9,15}$
+          maxLength: 13
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        logo:
+          type: string
+          format: uri
+          nullable: true
+        banner:
+          type: string
+          format: uri
+          nullable: true
+        opening_time:
+          type: string
+          format: time
+        closing_time:
+          type: string
+          format: time
+        delivery_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+        minimum_order:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,0})?$
+        is_open:
+          type: string
+          readOnly: true
+      required:
+      - address
+      - closing_time
+      - cuisine_type
+      - delivery_fee
+      - description
+      - email
+      - is_open
+      - name
+      - opening_time
+      - owner
+      - phone_number
+    RestoList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+        cuisine_type:
+          allOf:
+          - $ref: '#/components/schemas/CuisineTypeEnum'
+          description: |-
+            Available Cuisine
+
+            * `it` - Italian
+            * `ch` - Chinese
+            * `in` - Indian
+            * `me` - Mexican
+            * `am` - American
+            * `ja` - Japanese
+            * `th` - Thai
+            * `md` - Mediterranean
+        address:
+          type: string
+        phone_number:
+          type: string
+          pattern: ^\+?1?\d{9,15}$
+          maxLength: 13
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        logo:
+          type: string
+          format: uri
+          nullable: true
+        banner:
+          type: string
+          format: uri
+          nullable: true
+        delivery_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+        minimum_order:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,0})?$
+        is_open_now:
+          type: string
+          readOnly: true
+        average_rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+        total_reviews:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+      required:
+      - address
+      - cuisine_type
+      - delivery_fee
+      - description
+      - email
+      - id
+      - is_open_now
+      - name
+      - phone_number
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        customer:
+          type: string
+          format: uuid
+          readOnly: true
+        customer_name:
+          type: string
+          readOnly: true
+        restaurant:
+          type: integer
+          nullable: true
+        menu_item:
+          type: integer
+          nullable: true
+        order:
+          type: string
+          format: uuid
+        rating:
+          type: integer
+          maximum: 5
+          minimum: 0
+        comment:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - customer
+      - customer_name
+      - id
+      - order
+      - rating
+    StatusEnum:
+      enum:
+      - pd
+      - co
+      - pr
+      - rd
+      - pu
+      - dl
+      - cd
+      type: string
+      description: |-
+        * `pd` - Pending
+        * `co` - Confiremd
+        * `pr` - Preparing
+        * `rd` - Ready
+        * `pu` - Picked Up
+        * `dl` - Delivered
+        * `cd` - Cancelled
+    TokenObtainPair:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - email
+      - password
+      - refresh
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - token
+    UtypeEnum:
+      enum:
+      - c
+      - r
+      - d
+      type: string
+      description: "* `c` - Customer\n* `r` - Restaurant Owner\n* `d` - Delivery Driver
+        \  "
+    VehicleTypeEnum:
+      enum:
+      - b
+      - s
+      - c
+      type: string
+      description: |-
+        * `b` - Bike
+        * `s` - Scooter
+        * `c` - Car
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
